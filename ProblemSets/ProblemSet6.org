@@ -1,0 +1,39 @@
+
+Problems for Chapters 7 (Modules)
+
+* The exercises in this group pertain to the section Data.Map of Chapter 7 (Modules): 
+
+** How can a computation proceed, once a Maybe type has been returned in an intermediate step?  Take a look in Data.Maybe, and give a couple of simple examples showing how this could be done.
+
+
+** Miran Lipovaca (our author) gives a foldr version of his function findKey.  Explain how this version works, and give as well a version which uses foldl instead.
+
+
+** Check that there is a difference between the Prelude lookup and the lookup function in Data.Map.  Do enough reading to give a brief explanation for this. 
+
+
+** What exactly is the fromList function?  The text says that it returns a map -- ok: can this map be applied?  If not, then how is it used?  Give an example by using fromList to define and use a function myMap.  Once you have myMap, define a function myMap' which extends your myMap. In fact, give a couple of examples -- note that the keys can be tuples, for example. 
+
+
+** Create a map f from (key,value) pairs in which the values are  functions - perhaps different for each pair, and then figure out whether it is possible to use this map so that on application, the function for a given key is applied to that key.  If so, set up a couple of examples.  If not, say what the problem is. 
+
+
+** There is an interesting variant on fromList, namely fromListWith.  Read up on fromListWith (in LYaHfGG, henceforth LYaH) and in  https://hackage.haskell.org/package/containers-0.6.0.1/docs/Data-Map-Strict.html#g:15 , and write a function pairsToMap which inputs a list xs of (key,value) pairs and an appropriate function f, and which returns a map with all values for a given key combined as per f.  
+
+
+
+
+* The exercises in this group pertain to the section Data.List of Chapter 7 (Modules):
+
+** With import qualified Data.List as L (unfoldr), we can experiment with unfoldr, described in https://downloads.haskell.org/~ghc/latest/docs/html/libraries/base-4.13.0.0/Data-List.html#g:9 as a dual to foldr: "while foldr reduces a list to a summary value, unfoldr builds a list from a seed value."  For example, L.unfoldr (\n -> Just (n, 2*n)) 1  returns the list of powers of 2.  (What sequence is generated if 2*n is replaced by 2^n?).  And the Fibonacci sequence:  unfoldr (\(a,b) -> Just (a, (b,a+b))) (0,1) .  Use unfoldr to (i) generate the harmonic series (as an infinite list of exact fractions), (ii) to compute the successive approximations to pi/8 given in Section 1.3.1 in Abelson and Sussman (as doubles), and (iii) to implement a function myIterate.
+
+** Can unfoldr produce a finite list?  Discuss, etc. 
+
+** Can foldr work on an infinite list?  Discuss, etc. 
+
+** We have already seen how to implement foldr in Scheme (Abelson and Sussman call it 'accumulate').  Develop one or two candidates for unfoldr (call it unfoldrS) in Scheme.  Answer the previous two questions for your versions of unfoldrS and accumulate.  You may find the attached file (streams.scm)  helpful.   
+
+** Find an example showing that unfoldr (unfoldrS) can undo foldr (accumulate).   Working through a Scheme solution for this taught me a lot, resulting in some fine-tuning of my initial unfoldrS, and exposing quite a bit about the workings of unfoldr.  A Haskell solution also required some thought. 
+
+** Notice that Data.List does not export unfoldl.  Is there a reason for this?  What would unfoldl do?  What would it look like?
+

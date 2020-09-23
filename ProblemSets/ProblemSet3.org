@@ -1,0 +1,28 @@
+* Problem 1
+  Implement mergesort. Do not assume that the input is a list of numbers.  
+  Prove that your function works.
+* Problem 2
+  Same for insertionsort.
+* Problem 3
+  Same for selectionsort.
+* Problem 4
+  Write iterative and recursive Haskell functions to return the sum of the
+  digits in a non-negative integer.  For example, the sum of the digits in
+  345 is 12.  Prove your functions correct. 
+* Problem 5
+  Write iterative and recursive Haskell functions to test whether the digits
+  in a non-negative integer are in increasing order.  For example, the 
+  digits of 12348 are in increasing order, while those of 12343 are not.  Prove
+  your functions correct.
+* Problem 6
+  Solve Exercise 1.12 in Abelson and Sussman, using Haskell, and (proper) 
+  recursion. Next, give an iterative solution to the same 
+  exercise, using lists.  Give proofs for both programs. 
+* Problem 7
+  Does Haskell in fact support tail recursion?  See what you can find out!
+  
+  
+  
+  Write iterative and recursive Haskell functions to replace every occurrence
+  of an element (call it old) by another element (new) in a list.  Give proofs
+  for both programs.

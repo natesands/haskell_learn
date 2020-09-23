@@ -1,0 +1,2 @@
+-- Enum typeclass singnals members can be used in ranges.
+-- They have defined successors and predecesors

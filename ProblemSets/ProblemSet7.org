@@ -1,0 +1,20 @@
+
+* Pertaining to Data.List
+
+** Start by giving Scheme (R5RS) implementations of both foldr and foldl, and show via an example or two that your functions work.    
+
+My guess is that you will first come to a recursive definition of foldr, and an iterative definition of foldl.  Are these forced?  Can you give an iterative version of foldr, and a recursive version of foldl?  Discuss, etc. 
+
+
+** [Essay Question] We would like to have a better understanding of foldl and foldr. Look at the haskell source for these  and give a complete explanation of how each works.  This will require looking into the functions used to define both foldl and foldr (see Data.List), and from there into Data.Semigroups and Data.Monoids and beyond (for Endo, Dual, foldMap, getDual, appEndo...)  I think you will be astonished at what you find, for what the search reveals of both the underlying philosophy and ambitions of Haskell.  I would ask you to write a multi-page essay, with working title something like 'On the Definition and Context of Foldl in Haskell'.  The goal is to deliver the completed essay in a few (3) weeks - with some part of your draft work presented in weekly steps. (Reference https://hackage.haskell.org/package/base-4.12.0.0/docs/Data-List.html)
+
+
+
+
+* Pertaining to Data.Set
+
+** [Essay Question] Data.Set implements basic operations for finite sets.  Can some of these functions be implemented for infinite sets (of integers, say) represented as lists?  What about for infinite sets of integers represented as ordered lists?  Give examples.  Discuss, etc.  Let's run this as I have proposed for the foldl essay -- weekly drafts, with a tentative target delivery date of April 29. 
+
+* Pertaining to Algebraic Data Types
+
+** [Longish code/essay] Define a data type which comes as close as you can to implementing Scheme lists in Haskell.  Your type should support lists with lots of nesting - for example, the Scheme list (1 (((2)) (3 () 4) ((5) 6))) should be representable in your type.  Show how to define (analogs of) car, cdr and cons; show how to define the functions length, fringe, deep-reverse, count-nodes and sum-degrees in Haskell, over your list type.  Here, the function sum-degrees inputs a tree, and returns the sum of the outdegrees of all of the nodes in the tree.  For descriptions of the functions fringe, count-nodes and deep-reverse, see Lecture 10 in my 335 notes. You might want to take me up on the challenge to develop two versions of count-nodes, as per my Lecture 10.  Let's try to have this ready for next week.  

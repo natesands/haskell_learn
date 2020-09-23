@@ -1,0 +1,123 @@
+
+* Introduction
+
+  {-
+
+  Putting Laziness to Work  - 1
+  --------------------------------
+
+  (First of at least two units on this topic.  Subsequent discussion of laziness will wait
+  until we have discussed the chapter on data structures.)
+
+  References
+
+  Chapters 1 - 6 of Learn You ... , as well as
+  Abelson and Sussman, Section 3.5.2, and
+  https://en.wikipedia.org/wiki/Haskell_features#Examples
+
+  -}
+
+  -- using parallel list comprehensions requires this flag at the start of the source file
+  {-# LANGUAGE ParallelListComp #-}
+
+
+
+  -- some examples to get us started
+
+  
+
+  ones :: [Integer]
+  ones = 1 : ones
+
+  --------------------------------
+
+  natNums :: [Integer]
+  natNums = 0 : map (+1) natNums
+
+  integersFrom :: Integer -> [Integer]
+  integersFrom k = k : map (+1) (integersFrom k)
+
+
+  ---------------------------------
+
+  -- a romp5 with Fibonacci numbers, courtesy of the Wikipedia page cited above
+
+
+  -- classical lazy
+  fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+
+  -- regular list  comprehensions
+  fibs' = 0 : 1 : [ a+b | (a,b) <- zip fibs' (tail fibs') ]
+
+  -- parallel list comprehensions
+  fibs'' = 0  : 1 : [ a+b | a <- fibs'' | b <- tail fibs'' ]
+
+  -- what Wikipedia calls 'directly self-referencing'
+  fibs''' = 0 : 1 : next fibs''' where next (a : t@(b:_)) = (a + b) : next t
+
+  -- using a generating function
+  fibs'''' = next (0, 1) where next (a,b) = a : next (b, a + b)
+
+  -- using scanl
+  fibs''''' = 0 : scanl (+) 1 fibs'''''
+
+
+  ------------------------------------
+
+* Problem 1
+  Construct the list of prime numbers, using the method known as the sieve of Eratosthenes (see
+  Abelson and Sussman, Section 3.5.2)
+
+* Problem 2
+  Find the stream-based definition of the predicate prime? given in Abelson and Sussman, and 
+  implement it in Haskell. Prove that your function works.
+
+  I note that the question mark seems to cause problems, and that a quick look on the web has not
+  cleared this up for me.  From the Haskell Report, it appears that ? is valid syntax, but perhaps
+  an operator rather than a character which can occur in identifier names.  Request: figure this 
+  out!  Suggestion for now: call your predicate prime, rather than prime?
+
+* Problem 3
+  Write a function addLists, which produces the list of element-wise sums of two non-empty 
+  lists of numbers. Write this function in a couple of ways -- one using zip, and others not using zip.
+
+  Use your function to give another definition of the list of integers 
+  (ie, integersFrom 1), defined above, as well as yet another definition of the list of Fibonacci
+  numbers.  
+  
+  Then generalize these to define a couple of functions mapLists which input a binary function f and two
+  lists and which returns the element-wise result of applying f to corresponding elements in both lists. 
+  
+* Problem 4
+  Solve (in Haskell!) Exercise 3.56 from Abelson and Sussman.  Explain your code.
+
+* Problem 5
+  Represent the harmonic series as a list -- as part of our exploration of the type hierarchy, you should 
+  experiment with the type Rational, after 
+
+    import Data.Ratio
+
+  somewhere near the top of your file.  The goal is to have a list of exact fractions, rather than
+  floating point approximations. 
+
+* Problem 6
+  Solve (in Haskell) Exercise 3.59(a) from Abelson and Sussman.  Two solutions are wanted --
+    
+   integrateSeries :: [Double] -> [Double]
+  and
+   integrateSeries' :: [Double] -> [Rational]
+
+* Problem 7
+  Solve (in Haskell) Exercise 3.59(b) from Abelson and Sussman.  Your solutions should
+  show exact (that is, rational) coefficients.  
+
+* Problem 8
+  Solve (in Haskell) Exercise 3.60 from Abelson and Sussman. 
+
+* Problem 9
+  I would be remiss if I failed to point out that one can occasionally make use of infinite lists of infinite lists.  
+  Write a program powerTable which returns an infinite list whose first element is the list of all squares of positive integers,
+  whose second element is the list of all cubes of positive integers, and so on.
+
+
+  

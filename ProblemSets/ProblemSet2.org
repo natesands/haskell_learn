@@ -1,0 +1,44 @@
+* Problem 1
+  Using the term 'm-list' to mean a list of length m, write a 
+  function allMListsV1 so that for integers m > 0 and n > 0, 
+  allMListsV1 m n returns the list of all m-lists of integers j, 1 <= j <= n
+* Problem 2
+  Now generalize your solution to Problem 1 so that the second input is an
+  arbitrary list, l.  Call this function allMLists.
+* Problem 3
+  You know from the Discrete Math course how to compute the length of the lists resulting from
+  allMlists m [1..n].  Work out some of these numbers, and then test the feasibility of actually computing
+  these lists.  For which m and n would you say that the computation is no longer feasible?
+* Problem 4
+  Write a function allMListsWithDistinctElements which inputs a positive integer m and a list l, and which 
+  returns all distinct m-lists of elements of l.
+* Problem 5
+  With the introduction of types and recursion, we can revisit the Queens problem.  The goal this time is to find
+  all safe placements of n queens on an nxn chess board.  
+
+  I have found it convenient to use lists instead of tuples -- for example, a position on the board is [j,k] for
+  integers j and k, with 1 <= j <= n and 1 <= k <= n.
+
+  Throughout, n is the size of (one side of) the square board.
+
+  The idea for the recursion is to assume that at stage k, configurations is the list of all safe
+  placements of k queens in the last k columns of the board.  That is, each element of configurations
+  is a list of k configurations (a list of board positions) representing positions of k queens who are not
+  attacking each other.  Each configuration is then (tentatively) extended by a position of a queen
+  in the (k-1)st column.  This is accomplished using comprehension, and results in a list of lists of
+  configurations -- if we apply flatten, we again have a list of configurations.  BUT it is no
+  longer the case that all of these configurations are safe -- we filter for safety before moving
+  on to the next stage, with the invariant (configurations consists of all safe placements of
+  queens in the last k columns of the board) re-established with k having increased by 1.
+
+  The process completes when k == n.
+* Problem 6
+  Is it the case that all the configurations returned by your queens function are distinct?  Prove your claim. 
+* Problem 7
+  Does your queens function find ALL possible solutions to the n-queens problem?  Prove your claim. 
+* Problem 8
+  The approach described in Problem 4 is due to  Abelson and Sussman.  Can you think of another approach, perhaps 
+  based on your solution to Problem 2?  Which is better?  Why?
+* Problem 9
+  Look into compiling your solution to the queens problem.  Running ghci, length (queens 11) is 2680 -- taking some 
+  minutes to compute.  Does the compiled code do any better? 

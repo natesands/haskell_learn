@@ -1,0 +1,25 @@
+
+
+* Instructions
+  In all of these exercises, which draw on Chapters 1 - 6, pay attention to the type signatures! 
+* Problem 1
+  You wrote a function (let's now call it subst) for Problem 7 of Problem Set 3:  the call
+      subst old new lst
+  replaced every occurrence of old in lst by new.  I would like you now to write two more
+  versions of subst -- one using foldl and the other using foldr.  
+* Problem 2
+  Solve Exercise 1.32 (a) in Abelson and Sussman -- using Haskell, of course.  I am content with
+  just a recursive solution, but then ask that you implement it twice: once without foldr and once
+  using foldr.  After all, they do call the function 'accumulate'.
+* Problem 3
+  Solve Exercise 1.37 in Abelson and Sussman, using Haskell.  Give both recursive and iterative 
+  solutions.  Use local functions in each.  Give proofs.
+* Problem 4
+  Solve Exercise 1.41 in Abelson and Sussman, using Haskell.  Give a complete explanation
+  of the computed result. This is a good opportunity to play with $ -- right-associative
+  function composition -- as well.  
+* Problem 5
+  Solve Exercise 1.43 in Abelson and Sussman, using Haskell. Give both recursive and iterative
+  solutonss.  
+
+  

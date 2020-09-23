@@ -1,0 +1,8 @@
+removeDuplicates list = foldl (\x y -> if not (elem y x)
+                                then y:x else x) [] list
+distinct x = if length (removeDuplicates x) == length x
+  then True else False
+
+residents = ["Baker", "Cooper", "Fletcher", "Miller", "Smith"]
+
+
